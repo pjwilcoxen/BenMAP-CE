@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Runtime.ExceptionServices;
@@ -18,12 +19,50 @@ namespace BenMAP
 		private static extern bool AttachConsole(int pid);
 
 		[STAThread]
-		static void Main(string[] arg)
+		static int Main(string[] arg)
 		{
-			if (arg.Length > 0) //Adding after testing of BenMAP-229 (Command Line)--in dev environment, running as console app and using command line arguments in the "Debug" tab of properties 
+			string strArg = "";
+			foreach (string s in arg)
 			{
-				if (!AttachConsole(-1))   //This ensures that the output is attached to the parent console (i.e. command prompt)
-					AllocConsole();         //If unable to locate the parent console, it will allocate its own console for output
+				strArg = strArg + " " + s;
+			}
+			strArg = strArg.Trim();
+			CommonClass.InputParams = new string[] { strArg };
+
+			// Check for a recognized command line argument and set
+			// the appropriate mode flag
+			if(strArg != "")
+			{
+				bool badArg = false;
+
+				string lowerArg = strArg.ToLower();
+				if (lowerArg.Contains(".ctlx"))
+					CommonClass.BatchMode = true;
+				else if (lowerArg.Contains(".projx"))
+					CommonClass.ProjectMode = true;
+				else if (lowerArg.Contains(".smat"))
+					CommonClass.SMATMode = true;
+				else
+					badArg = true;
+
+				if( (CommonClass.BatchMode || badArg) && !AttachConsole(-1) )
+					AllocConsole();
+
+				if (badArg)
+				{
+					Console.WriteLine("Incorrect command line argument:"+strArg);
+					Console.WriteLine("Expected a ctlx, projx or smat file.");
+					Environment.Exit(0);
+				}
+			}
+
+			if ( CommonClass.BatchMode )
+			{
+				if (!File.Exists(strArg))
+				{
+					Console.WriteLine("Control file not found: "+strArg);
+					Environment.Exit(0);
+				}
 			}
 			else
 			{
@@ -42,13 +81,12 @@ namespace BenMAP
 				//currentDomain.FirstChanceException += FirstChanceExceptionHandler;
 			}
 
-			string strArg = "";
-			foreach (string s in arg)
-			{
-				strArg = strArg + " " + s;
-			}
-			CommonClass.InputParams = new string[] { strArg };
 			Application.Run(new Main());
+
+			if(CommonClass.BatchMode)
+				Console.WriteLine("Batch run complete");
+
+			return 0;
 		}
 
 		//static void FirstChanceExceptionHandler(object source, FirstChanceExceptionEventArgs args)

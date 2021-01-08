@@ -4817,7 +4817,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 			{
 				bool isBatch = false;
 
-				if (CommonClass.InputParams != null && CommonClass.InputParams.Count() > 0 && CommonClass.InputParams[0].ToLower().Contains(".ctlx"))
+				if (CommonClass.BatchMode)
 				{
 					isBatch = true;
 				}
@@ -6595,12 +6595,11 @@ Color.FromArgb(255, 255, 166), 45.0F);
 		{
 			try
 			{
-				if (CommonClass.InputParams != null && CommonClass.InputParams.Length > 0 && CommonClass.InputParams[0].ToLower().IndexOf("ctlx") > 0)
+				if (CommonClass.BatchMode)
 				{
-
-
+					// do nothing
 				}
-				else if (CommonClass.InputParams != null && CommonClass.InputParams.Length > 0 && CommonClass.InputParams[0].ToLower().IndexOf("projx") > 0)
+				else if (CommonClass.ProjectMode && CommonClass.InputParams != null) // guard against reloading since InputParams is reset below
 				{
 					splitContainer1.Visible = true;
 					CommonClass.ClearAllObject();
@@ -6816,7 +6815,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 						changeNodeImage(trvSetting.Nodes[2].Nodes[0]);
 					}
 				}
-				else if (CommonClass.InputParams != null && CommonClass.InputParams.Length > 0 && CommonClass.InputParams[0].ToLower().IndexOf("smat") > 0)
+				else if (CommonClass.SMATMode)
 				{
 					splitContainer1.Visible = true;
 					CommonClass.ClearAllObject();

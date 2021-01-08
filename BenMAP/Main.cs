@@ -247,7 +247,7 @@ namespace BenMAP
 					StartPage startFrm = new StartPage();
 					startFrm.ShowDialog();
 				}
-				else if (CommonClass.InputParams[0].ToLower().Contains(".ctlx"))
+				else if (CommonClass.BatchMode)
 				{
 
 					this.Hide();
@@ -327,8 +327,7 @@ namespace BenMAP
 		private void Main_Load(object sender, EventArgs e)
 		{
 			_projFileName = "";
-			if (CommonClass.InputParams != null && CommonClass.InputParams.Count() != 0
-							 && CommonClass.InputParams[0].ToLower().Contains(".ctlx"))
+			if (CommonClass.BatchMode)
 			{
 				if (BatchCommonClass.RunBatch(CommonClass.InputParams[0]) == false)
 				{
@@ -813,8 +812,7 @@ namespace BenMAP
 
 			try
 			{
-				if (CommonClass.InputParams != null
-&& CommonClass.InputParams[0].ToLower().Contains(".ctlx"))
+				if (CommonClass.BatchMode)
 				{
 					e.Cancel = true;
 					return;

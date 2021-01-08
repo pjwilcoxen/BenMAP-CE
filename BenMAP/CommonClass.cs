@@ -53,6 +53,11 @@ namespace BenMAP
 		public static int debugRow = 2;
 		public static int debugCol = 1;
 		public static bool debugGridCell = true;
+
+		public static bool BatchMode = false;
+		public static bool ProjectMode = false;
+		public static bool SMATMode = false;
+
 		public static void DeleteShapeFileName(string FileName)
 		{
 			if (!File.Exists(FileName)) return;
@@ -350,7 +355,7 @@ namespace BenMAP
 			fs.Close();
 			bool isBatch = false;
 
-			if (CommonClass.InputParams != null && CommonClass.InputParams.Count() > 0 && CommonClass.InputParams[0].ToLower().Contains(".ctlx"))
+			if (CommonClass.BatchMode)
 			{
 				isBatch = true;
 			}
@@ -2387,7 +2392,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 					return ds.Tables[0];
 				}
 
-				if (CommonClass.InputParams != null && CommonClass.InputParams.Count() > 0 && CommonClass.InputParams[0].ToLower().Contains(".ctlx"))
+				if (CommonClass.BatchMode)
 				{
 					isBatch = true;
 				}

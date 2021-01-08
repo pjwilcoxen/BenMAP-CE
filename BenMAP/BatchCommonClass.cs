@@ -1946,7 +1946,6 @@ namespace BenMAP
 		{
 			try
 			{
-				if (!File.Exists(strFile)) return null;
 				StreamReader objReader = new StreamReader(strFile);
 				string sLine = "";
 				ArrayList LineList = new ArrayList();
