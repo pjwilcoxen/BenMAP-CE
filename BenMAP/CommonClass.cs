@@ -1370,7 +1370,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 		}
 
 		/// <summary>
-		/// Cleanup the list of intersections for each geographic area so that we only calculate one result per cell. 
+		/// Cleanup the list of intersections for each geographic area so that we only calculate one result per cell.
 		/// Any intersection that does not represent the majority of the cell's area will be removed.
 		/// This can be a bit tricky for cells that intersection more than two geographic areas
 		/// </summary>
@@ -1431,7 +1431,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 				}
 				System.Diagnostics.Debug.WriteLine("Sum=" + pctSumIntersectionForCell);
 				//Now, we know which intersection is the largest and what needs to be cleaned up
-				//If the sum intersection is > 0.5 then we 
+				//If the sum intersection is > 0.5 then we
 				// 2020-12-04 - As part of BENMAP-460, only remove cells when there is overlapping intersections between neighboring geographic areas
 				// We will now keep single intersections, even if they are <50% in order to avoid coastal cells being excluded
 				//if (pctSumIntersectionForCell >= 0.5)
@@ -1692,17 +1692,17 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 							IFeature intersectFeature = null;
 							double popVal = 0.0;
 
-							//if ((other.Features.Count < 5 || self.Features.Count < 5) 
-							//            && other.Features[iotherFeature].Distance(new Point(selfFeature.Envelope.Minimum)) == 0 
-							//            && other.Features[iotherFeature].Distance(new Point(selfFeature.Envelope.Maximum.X, selfFeature.Envelope.Minimum.Y)) == 0 
-							//            && other.Features[iotherFeature].Distance(new Point(selfFeature.Envelope.Maximum)) == 0 
+							//if ((other.Features.Count < 5 || self.Features.Count < 5)
+							//            && other.Features[iotherFeature].Distance(new Point(selfFeature.Envelope.Minimum)) == 0
+							//            && other.Features[iotherFeature].Distance(new Point(selfFeature.Envelope.Maximum.X, selfFeature.Envelope.Minimum.Y)) == 0
+							//            && other.Features[iotherFeature].Distance(new Point(selfFeature.Envelope.Maximum)) == 0
 							//            && other.Features[iotherFeature].Distance(new Point(selfFeature.Envelope.Minimum.X, selfFeature.Envelope.Maximum.Y)) == 0)
 							//{
 							//    intersectFeature = selfFeature;
-							//} else if ((other.Features.Count < 5 || self.Features.Count < 5) 
-							//            && selfFeature.Distance(new Point(other.Features[iotherFeature].Envelope.Minimum)) == 0 
-							//            && selfFeature.Distance(new Point(other.Features[iotherFeature].Envelope.Maximum.X, other.Features[iotherFeature].Envelope.Minimum.Y)) == 0 
-							//            && selfFeature.Distance(new Point(other.Features[iotherFeature].Envelope.Maximum)) == 0 
+							//} else if ((other.Features.Count < 5 || self.Features.Count < 5)
+							//            && selfFeature.Distance(new Point(other.Features[iotherFeature].Envelope.Minimum)) == 0
+							//            && selfFeature.Distance(new Point(other.Features[iotherFeature].Envelope.Maximum.X, other.Features[iotherFeature].Envelope.Minimum.Y)) == 0
+							//            && selfFeature.Distance(new Point(other.Features[iotherFeature].Envelope.Maximum)) == 0
 							//            && selfFeature.Distance(new Point(other.Features[iotherFeature].Envelope.Minimum.X, other.Features[iotherFeature].Envelope.Maximum.Y)) == 0)
 							// {
 							//    intersectFeature = other.Features[iotherFeature];
@@ -2151,7 +2151,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 
 		public static void getRelationshipFromBenMAPGridPercentage(int big, int small, String popRasterFileLoc)
 		{
-			//dpa 1/29/2017 note that the popRasterFileLoc is never used... 
+			//dpa 1/29/2017 note that the popRasterFileLoc is never used...
 			try
 			{
 
@@ -2339,7 +2339,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 
 		public static System.Data.DataTable ExcelToDataTable(string filenameurl, string tabname = null)
 		{
-			//This function is created so that tabnameref works as an optional reference parameter. 
+			//This function is created so that tabnameref works as an optional reference parameter.
 			//We want this parameter optional so that adding tabnameref won't break any existing codes.
 			string dummyref = string.Empty;
 			return ExcelToDataTable(filenameurl, ref dummyref, tabname);
@@ -2364,7 +2364,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 				bool isBatch = false;
 				System.Data.DataSet ds = excelReader.AsDataSet();
 
-				//BenMAP 468: Validation of valuation function threw a "Endpoint doesn't exist in the database" warning for an entry that had trailing whitespace but still saved the function. 
+				//BenMAP 468: Validation of valuation function threw a "Endpoint doesn't exist in the database" warning for an entry that had trailing whitespace but still saved the function.
 				//Whenever a user provides an Excel file, trim white space for any entry designated as a string.
 				//Carrying out the trim here ensures the behavior for validation of health impact functions, etc.
 				foreach (DataTable dt in ds.Tables)
@@ -2771,7 +2771,6 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 			}
 		}
 
-		[Description("当从主窗体进入另外一个窗体后出发改变当前状态提示")]
 		public static event FormChangedStatHandler FormChangedStat;
 
 		protected static void OnFormChangedStat()
@@ -2792,8 +2791,9 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 				OnNodeAnscy();
 			}
 		}
-		[Description("当从主窗体进入另外一个窗体后出发改变当前状态提示")]
+
 		public static event FormChangedStatHandler NodeAnscy;
+
 		protected static void OnNodeAnscy()
 		{
 			if (NodeAnscy != null)
@@ -2801,7 +2801,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 				NodeAnscy();
 			}
 		}
-		[Description("改变Setup时发生")]
+
 		public static event FormChangedStatHandler FormChangedSetup;
 
 		protected static void OnFormChangedSetup()
@@ -3911,9 +3911,9 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 		[ProtoMember(44)]
 		public string GeographicAreaFeatureID;
 		[ProtoMember(45)]
-		public int CountStudies; //YY: Added Nov 2019.  
+		public int CountStudies; //YY: Added Nov 2019.
 		[ProtoMember(46)]
-		public string AgeRange; //YY: Added Nov 2019. 
+		public string AgeRange; //YY: Added Nov 2019.
 	}
 
 	[Serializable]
@@ -3955,7 +3955,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 		[ProtoMember(17)]
 		public string GeographicAreaFeatureID;
 		[ProtoMember(18)]
-		public int CountStudies; //YY: Added Nov 2019. Removed if not needed here. 
+		public int CountStudies; //YY: Added Nov 2019. Removed if not needed here.
 		[ProtoMember(19)]
 		public string AgeRange; //YY: Added Nov 2019. Removed if not needed here.
 	}
@@ -4717,7 +4717,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 			if (String.IsNullOrEmpty(strIn))
 				return false;
 
-			// Use IdnMapping class to convert Unicode domain names. 
+			// Use IdnMapping class to convert Unicode domain names.
 			try
 			{
 				strIn = Regex.Replace(strIn, @"(@)(.+)$", this.DomainMapper, RegexOptions.None);
@@ -4730,7 +4730,7 @@ other.Features[iotherFeature].Geometry.Distance(new Point(selfFeature.Geometry.E
 			if (invalid)
 				return false;
 
-			// Return true if strIn is in valid e-mail format. 
+			// Return true if strIn is in valid e-mail format.
 			try
 			{
 				return Regex.IsMatch(strIn,

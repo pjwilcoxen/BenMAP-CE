@@ -30,18 +30,16 @@ namespace BenMAP
 				Application.EnableVisualStyles();
 				Application.SetCompatibleTextRenderingDefault(false);
 
-
 				AppDomain currentDomain = AppDomain.CurrentDomain;
 				// Add handler for UI thread exceptions
 				Application.ThreadException += new ThreadExceptionEventHandler(ThreadExceptionHandler);
 				// Force all WinForms errors to go through handler
 				Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-				// This handler is for catching non-UI thread exceptions          
+				// This handler is for catching non-UI thread exceptions
 				currentDomain.UnhandledException += new UnhandledExceptionEventHandler(UnhandledExceptionHandler);
 
-				// This handler is for catching all exceptions, handled or not     
+				// This handler is for catching all exceptions, handled or not
 				//currentDomain.FirstChanceException += FirstChanceExceptionHandler;
-
 			}
 
 			string strArg = "";

@@ -775,7 +775,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 					{
 						if (ShrinkOtherMG)
 						{
-							layer.IsExpanded = false;             // Unexpand other mapgroups to increase display room for new layer    
+							layer.IsExpanded = false;             // Unexpand other mapgroups to increase display room for new layer
 						}
 						if (layer.LegendText != regionGroupLegendText && parentMGText != regionGroupLegendText)
 						{
@@ -857,7 +857,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 		void DrawMapResults(List<CRSelectFunctionCalculateValue> lstCRSelectFunctionCalculateValue, Boolean bTable)
 		{
 			//BenMAP-400  Previously code relied on the first instance of a list to generate layer, now updated to cycle through each set of results
-			//code for drawing the incidence data results in the DotSpatial map.               
+			//code for drawing the incidence data results in the DotSpatial map.
 			//CRSelectFunctionCalculateValue crSelectFunctionCalculateValue = null;
 			//crSelectFunctionCalculateValue = lstCRSelectFunctionCalculateValue.First();
 
@@ -1022,7 +1022,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 							}
 						}
 					}
-				
+
 					if (cflstResult == null)
 					{
 						crResults.Add("Point Estimate", Convert.ToString(crcv.PointEstimate));
@@ -1098,7 +1098,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 				string strValueField = polLayer.DataSet.DataTable.Columns["Point Estimate"].ColumnName;
 				_columnName = strValueField;
 
-				//build symbology 
+				//build symbology
 				polLayer.Symbology = CreateResultPolyScheme(ref polLayer, 6, "R"); //-MCB added
 
 				double dMinValue = 0.0;
@@ -1181,7 +1181,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 
 		private void btnZoomIn_Click(object sender, EventArgs e)
 		{
-			//dpa - change the map mode to zoom in 
+			//dpa - change the map mode to zoom in
 			//this button toggles map mode, hence changing the "checked" state.
 			mainMap.FunctionMode = FunctionMode.ZoomIn;
 			btnSelect.Checked = false;
@@ -1985,7 +1985,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 						{
 							s = (bcg.Base as ModelDataLine).DatabaseFilePath.Substring((bcg.Base as ModelDataLine).DatabaseFilePath.LastIndexOf(@"\") + 1);
 						}
-						
+
 
 					}
 					catch
@@ -2009,7 +2009,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 						{
 							s = (bcg.Control as ModelDataLine).DatabaseFilePath.Substring((bcg.Control as ModelDataLine).DatabaseFilePath.LastIndexOf(@"\") + 1);
 						}
-							
+
 
 					}
 					catch
@@ -3020,7 +3020,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 									}
 								}
 
-								//YY: pooling -  new added 
+								//YY: pooling -  new added
 								foreach (IncidencePoolingAndAggregation ip in CommonClass.lstIncidencePoolingAndAggregation)
 								{
 									bool bHavePooling = false;
@@ -3792,7 +3792,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 			string LayerNameText;
 			string LayerLegendText;
 
-			//Get Metrics fields for this pollutant. 
+			//Get Metrics fields for this pollutant.
 			//If no metrics then return with warning/error
 			List<string> lstAddField = new List<string>();
 			if (benMAPLine.Pollutant.Metrics != null)
@@ -3855,7 +3855,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 							benMAPLine.ShapeFile = benMAPLine.Pollutant.PollutantID + "G" + CommonClass.GBenMAPGrid.GridDefinitionID + "B" + IsBaseLongText + ".shp";
 							benMAPLine.ShapeFile = string.Format("{0}\\Tmp\\{1}", CommonClass.DataFilePath, benMAPLine.ShapeFile);
 						}
-						if (benMAPLine.ModelResultAttributes != null)  //MCB added this until we can figure out why the result attributes are not being populated 
+						if (benMAPLine.ModelResultAttributes != null)  //MCB added this until we can figure out why the result attributes are not being populated
 						{
 							DataSourceCommonClass.SaveBenMAPLineShapeFile(CommonClass.GBenMAPGrid, benMAPLine.Pollutant, benMAPLine, benMAPLine.ShapeFile);    ///MCB- Commemented out to resolve issues with not drawing non-saved data (e.g., Monitor data).  This may just be a twmp fix and May cause problems elsewhere
 						}
@@ -4352,7 +4352,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 						{
 							s = (bcg.Control as ModelDataLine).DatabaseFilePath.Substring((bcg.Control as ModelDataLine).DatabaseFilePath.LastIndexOf(@"\") + 1);
 						}
-						
+
 
 					}
 					catch
@@ -4593,7 +4593,7 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 		#region "Un used"
 		// ZED
 		/* private void ZedGraphResult(ZedGraphControl zgc, string file)
-		{ 
+		{
 				try
 				{
 						System.Data.DataTable dt = DataSourceCommonClass.getDataSetFromCSV(file).Tables[0]; System.Data.DataSet dsOut = new System.Data.DataSet();
@@ -4698,12 +4698,12 @@ SELECT SHAPEFILENAME FROM REGULARGRIDDEFINITIONDETAILS where griddefinitionid = 
 				catch (Exception err)
 				{
 						Logger.LogError(err);
-				} 
+				}
 		} */
 
-		// ZED 
+		// ZED
 		/* private void ZedGraphDemo(ZedGraphControl zgc)
-		{ 
+		{
 				GraphPane myPane = zgc.GraphPane;
 				string[] str = { "North", "South", "West", "East", "Central" };
 
@@ -4741,7 +4741,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 				zgc.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
 
 				zgc.AxisChange();
-				zgc.Refresh(); 
+				zgc.Refresh();
 
 		} */
 
@@ -4821,6 +4821,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 				{
 					isBatch = true;
 				}
+
 				try
 				{
 
@@ -5825,7 +5826,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 							dt.Rows.Add(dr);
 
 						}
-						if (!chbAllPercentiles.Checked & !isBatch) //BenMAP-284 
+						if (!chbAllPercentiles.Checked & !isBatch) //BenMAP-284
 						{
 							List<int> toRemoveColIdx = new List<int>();         //User requests only 2.5 and 97.5--remove other percentile columns
 
@@ -6814,8 +6815,6 @@ Color.FromArgb(255, 255, 166), 45.0F);
 					{
 						changeNodeImage(trvSetting.Nodes[2].Nodes[0]);
 					}
-
-
 				}
 				else if (CommonClass.InputParams != null && CommonClass.InputParams.Length > 0 && CommonClass.InputParams[0].ToLower().IndexOf("smat") > 0)
 				{
@@ -8684,7 +8683,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 						}
 					}
 					//Note: AspectName like "lstPercentile[1]" works fines in ObjectListView 2.5.0.0. However, it does not work in version 2.9.1.
-					//Try adding AspectGetter if the ObjectListView is upgraded. 
+					//Try adding AspectGetter if the ObjectListView is upgraded.
 					if (lstAllSelectCRFuntion.First().CRSelectFunctionCalculateValue.CRCalculateValues.First().LstPercentile != null)
 					{
 						if (strPoolIncidencePercentiles != null && strPoolIncidencePercentiles.Count > 0)
@@ -8715,7 +8714,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 								{
 									if (chbAllPercentiles.Checked)         //BenMAP-284: Add all percentiles if selected, otherwise only add the 2.5 and 97.5
 									{
-										//BrightIdeasSoftware.OLVColumn olvPercentile = new BrightIdeasSoftware.OLVColumn() { AspectName = "Key.Key.Key.LstPercentile[" + i + "]", AspectToStringFormat = "{0:N4}", Width = "Percentile100".Length * 8, Text = "Percentile " + ((Convert.ToDouble(i + 1) * 100.00 / Convert.ToDouble(lstAllSelectCRFuntion.First().CRSelectFunctionCalculateValue.CRCalculateValues.First().LstPercentile.Count()) - (100.00 / (2 * Convert.ToDouble(lstAllSelectCRFuntion.First().CRSelectFunctionCalculateValue.CRCalculateValues.First().LstPercentile.Count()))))), IsEditable = false }; 
+										//BrightIdeasSoftware.OLVColumn olvPercentile = new BrightIdeasSoftware.OLVColumn() { AspectName = "Key.Key.Key.LstPercentile[" + i + "]", AspectToStringFormat = "{0:N4}", Width = "Percentile100".Length * 8, Text = "Percentile " + ((Convert.ToDouble(i + 1) * 100.00 / Convert.ToDouble(lstAllSelectCRFuntion.First().CRSelectFunctionCalculateValue.CRCalculateValues.First().LstPercentile.Count()) - (100.00 / (2 * Convert.ToDouble(lstAllSelectCRFuntion.First().CRSelectFunctionCalculateValue.CRCalculateValues.First().LstPercentile.Count()))))), IsEditable = false };
 										BrightIdeasSoftware.OLVColumn olvPercentile = new BrightIdeasSoftware.OLVColumn() { AspectToStringFormat = "{0:N4}", Width = "Percentile100".Length * 8, Text = "Percentile " + ((Convert.ToDouble(i + 1) * 100.00 / Convert.ToDouble(lstAllSelectCRFuntion.First().CRSelectFunctionCalculateValue.CRCalculateValues.First().LstPercentile.Count()) - (100.00 / (2 * Convert.ToDouble(lstAllSelectCRFuntion.First().CRSelectFunctionCalculateValue.CRCalculateValues.First().LstPercentile.Count()))))), IsEditable = false };
 										int j = i;
 										olvPercentile.AspectGetter = delegate (object x)
@@ -8988,7 +8987,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 								i = 0;
 								while (i < strHealthImpactPercentiles.Count)
 								{
-									//BrightIdeasSoftware.OLVColumn olvPercentile = new BrightIdeasSoftware.OLVColumn() { AspectName = "Key.Key.LstPercentile[" + (int)(Convert.ToDouble(strHealthImpactPercentiles[i]) / interval - 1) / 2 + "]", AspectToStringFormat = "{0:N4}", Width = "Percentile100".Length * 8, Text = "Percentile " + strHealthImpactPercentiles[i].ToString(), IsEditable = false }; 
+									//BrightIdeasSoftware.OLVColumn olvPercentile = new BrightIdeasSoftware.OLVColumn() { AspectName = "Key.Key.LstPercentile[" + (int)(Convert.ToDouble(strHealthImpactPercentiles[i]) / interval - 1) / 2 + "]", AspectToStringFormat = "{0:N4}", Width = "Percentile100".Length * 8, Text = "Percentile " + strHealthImpactPercentiles[i].ToString(), IsEditable = false };
 									BrightIdeasSoftware.OLVColumn olvPercentile = new BrightIdeasSoftware.OLVColumn() { AspectToStringFormat = "{0:N4}", Width = "Percentile100".Length * 8, Text = "Percentile " + strHealthImpactPercentiles[i].ToString(), IsEditable = false };
 									int j = i;
 									olvPercentile.AspectGetter = delegate (object x)
@@ -9273,7 +9272,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 							i = 0;
 							while (i < strAPVPercentiles.Count)
 							{
-								//BrightIdeasSoftware.OLVColumn olvPercentile = new BrightIdeasSoftware.OLVColumn() { AspectName = "Key.Key.LstPercentile[" + (int)(Convert.ToDouble(strAPVPercentiles[i]) / 0.5 - 1) / 2 + "]", AspectToStringFormat = "{0:N4}", Width = "Percentile100".Length * 8, Text = "Percentile " + strAPVPercentiles[i].ToString(), IsEditable = false }; 
+								//BrightIdeasSoftware.OLVColumn olvPercentile = new BrightIdeasSoftware.OLVColumn() { AspectName = "Key.Key.LstPercentile[" + (int)(Convert.ToDouble(strAPVPercentiles[i]) / 0.5 - 1) / 2 + "]", AspectToStringFormat = "{0:N4}", Width = "Percentile100".Length * 8, Text = "Percentile " + strAPVPercentiles[i].ToString(), IsEditable = false };
 								BrightIdeasSoftware.OLVColumn olvPercentile = new BrightIdeasSoftware.OLVColumn() { AspectToStringFormat = "{0:N4}", Width = "Percentile100".Length * 8, Text = "Percentile " + strAPVPercentiles[i].ToString(), IsEditable = false };
 								int j = i;
 								olvPercentile.AspectGetter = delegate (object x)
@@ -11959,7 +11958,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 							nodeText = nodeText.Replace("..", ".");
 							nodeText = nodeText.Replace("#", "");
 
-							if (node.Nodes.Count > 1) //updated to address BenMAP 258/246--printing the text of first-level parent node (11/26/2019,MP) 
+							if (node.Nodes.Count > 1) //updated to address BenMAP 258/246--printing the text of first-level parent node (11/26/2019,MP)
 							{
 								sw.WriteLine("<" + nodeText + ">");
 								saveNode(node.Nodes);
@@ -13813,7 +13812,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 
 						if (aPolyLayer.Name == LayerName)
 						{
-							layersToRemove.Add(aLayer); //add to list of layers to remove                            
+							layersToRemove.Add(aLayer); //add to list of layers to remove
 						}
 						else if (ShrinkOtherLayersInMapGroup)  // Unexpand this layer to increase display room for new layer
 						{
@@ -13866,7 +13865,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 					}
 				}
 			}
-			//this loop will be true ONLY when there is ONLY admin layer is on the map control 
+			//this loop will be true ONLY when there is ONLY admin layer is on the map control
 			// AND user is trying to print the visible admin layer
 			if (TopVisLayer == null & mainMap.GetAllLayers().Count > 0)
 			{
@@ -14461,7 +14460,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 		}
 
 		private void ShowCDFgraph()
-		{/* 
+		{/*
 						try
 						{
 								GraphPane myPane = zedGraphCtl2.GraphPane;
@@ -14607,7 +14606,7 @@ Color.FromArgb(255, 255, 166), 45.0F);
 			Color[] _red_black_Array = { Color.FromArgb(178, 24, 43), Color.FromArgb(239, 138, 98), Color.FromArgb(253, 219, 199), Color.FromArgb(224, 224, 224), Color.FromArgb(153, 153, 153), Color.FromArgb(77, 77, 77) };
 			Color[] _purple_green_Array = { Color.FromArgb(118, 42, 131), Color.FromArgb(175, 141, 195), Color.FromArgb(231, 212, 232), Color.FromArgb(217, 240, 211), Color.FromArgb(127, 191, 123), Color.FromArgb(27, 120, 55) };
 
-			//Note: Could double the ramps by allowing the case hue names in reverse order and just reversing the array contents. 
+			//Note: Could double the ramps by allowing the case hue names in reverse order and just reversing the array contents.
 			switch (rampID)
 			{
 				case "oranges":
@@ -14823,12 +14822,12 @@ Color.FromArgb(255, 255, 166), 45.0F);
 				}
 				if (fName != "")
 				{
-					commandText = string.Format(@"select SHAPEFILEGRIDDEFINITIONDETAILS.GRIDDEFINITIONID 
-from SHAPEFILEGRIDDEFINITIONDETAILS 
+					commandText = string.Format(@"select SHAPEFILEGRIDDEFINITIONDETAILS.GRIDDEFINITIONID
+from SHAPEFILEGRIDDEFINITIONDETAILS
 join GRIDDEFINITIONS on SHAPEFILEGRIDDEFINITIONDETAILS.GRIDDEFINITIONID = GRIDDEFINITIONS.GRIDDEFINITIONID where SHAPEFILENAME = '{0}' and GRIDDEFINITIONS.SETUPID = {1}
 UNION
-select REGULARGRIDDEFINITIONDETAILS.GRIDDEFINITIONID 
-from REGULARGRIDDEFINITIONDETAILS 
+select REGULARGRIDDEFINITIONDETAILS.GRIDDEFINITIONID
+from REGULARGRIDDEFINITIONDETAILS
 join GRIDDEFINITIONS on REGULARGRIDDEFINITIONDETAILS.GRIDDEFINITIONID = GRIDDEFINITIONS.GRIDDEFINITIONID where SHAPEFILENAME = '{0}' and GRIDDEFINITIONS.SETUPID = {1}", fName, setupID);
 					obj = fb.ExecuteScalar(CommonClass.Connection, new CommandType(), commandText);
 					gridID = Convert.ToString(obj);
@@ -15117,7 +15116,7 @@ join GRIDDEFINITIONS on REGULARGRIDDEFINITIONDETAILS.GRIDDEFINITIONID = GRIDDEFI
 		}
 		private void TreeNodeSearch(TreeNode tn, string SearchText)
 		{
-			//This function iterates through each node of the tree, checks the text against the search term, and (if it matches) calls the function to save the node path index.. 
+			//This function iterates through each node of the tree, checks the text against the search term, and (if it matches) calls the function to save the node path index..
 			try
 			{
 				if (tn.Level == 0)
@@ -15230,7 +15229,7 @@ join GRIDDEFINITIONS on REGULARGRIDDEFINITIONDETAILS.GRIDDEFINITIONID = GRIDDEFI
 
 		private void textBoxFilterSimple_KeyDown(object sender, KeyEventArgs e)
 		{
-			//The previous filter functionality is utilized in the "Text Changed" event of textBoxFilterSimple. 
+			//The previous filter functionality is utilized in the "Text Changed" event of textBoxFilterSimple.
 			//This function searches the tree after the user hits "Enter" and forces the user to click the "Next" button, rather than continuing to hit enter, to cycle through search results.
 
 			if (e.KeyCode == Keys.Enter && strList.Count == 0)
@@ -15280,7 +15279,7 @@ join GRIDDEFINITIONS on REGULARGRIDDEFINITIONDETAILS.GRIDDEFINITIONID = GRIDDEFI
 		private void btnNext_Click(object sender, EventArgs e)
 		{
 			if (nodeSearchEntry > strList.Count - 1) //If the user clicks the Next button, through the end of the results. Reset the counter to 0, and collapse the tree.
-			{                                        //Without collapsing, the highlighting/cycling through result nodes continues but moving the screen into view of the selecte nodes stops. 
+			{                                        //Without collapsing, the highlighting/cycling through result nodes continues but moving the screen into view of the selecte nodes stops.
 				nodeSearchEntry = 0;                 //Tried reseting the selection to the top of the treeList but didn't seem to work.
 				TreeListCollapse();
 			}

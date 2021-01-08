@@ -608,7 +608,7 @@ namespace BenMAP
 							if (batchAPV.DollarYear != null && batchAPV.DollarYear != "")
 								//valuationMethodPoolingAndAggregation.IncidencePoolingAndAggregationAdvance.IncomeGrowthYear = Convert.ToInt32(batchAPV.DollarYear);
 								valuationMethodPoolingAndAggregation.IncidencePoolingAndAggregationAdvance.CurrencyYear = Convert.ToInt32(batchAPV.DollarYear);
-							//Income growth year is different from currency year. Income growth year should remain what is specified in APV (*.apvx) file. 
+							//Income growth year is different from currency year. Income growth year should remain what is specified in APV (*.apvx) file.
 							if (batchAPV.RandomSeed != -1)
 								valuationMethodPoolingAndAggregation.IncidencePoolingAndAggregationAdvance.RandomSeed = batchAPV.RandomSeed.ToString();
 
@@ -1720,6 +1720,7 @@ namespace BenMAP
 										Console.WriteLine("Results Located At:");
 										Console.WriteLine(batchReportAPVR.ReportFile);
 										break;
+
 									case "PooledIncidence":
 										List<AllSelectCRFunction> lstCR = new List<AllSelectCRFunction>(); //In order to display version and dataset in batch mode, must pass the AllSelectCRFunction, not the CRSelectFunctionCalculateValue--[BenMAP 434, MP]
 										benMAP.LoadAllIncidencePooling(ref benMAP.dicIncidencePoolingAndAggregation, ref benMAP.dicIncidencePoolingAndAggregationUnPooled);
@@ -1780,6 +1781,7 @@ namespace BenMAP
 										Console.WriteLine("Results Located At:");
 										Console.WriteLine(batchReportAPVR.ReportFile);
 										break;
+
 									default:
 										WriteBatchLogFile("APVR Report Error (Result Type Not Supported):", strFile + ".log");
 										WriteBatchLogFile("Occurred: " + dateTime, strFile + ".log");

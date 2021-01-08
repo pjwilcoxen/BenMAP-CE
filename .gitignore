@@ -36,5 +36,6 @@ Uninstaller/bin/
 /BenMAP/obj/Debug/*.cache
 /BenMAP/obj/Debug/BenMAP.csproj.FileListAbsolute.txt
 /.vs/
-BenMAP/BenMap.cs
 BenMAP/DataBase/placeholder.txt
+*.bak
+*~
