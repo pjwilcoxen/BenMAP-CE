@@ -251,6 +251,7 @@ namespace BenMAP
 		{
 			DateTime dateTime = DateTime.Now;
 
+         Console.WriteLine("Processing command file: "+strFile);
 			try
 			{   //Count # of Batch Configs and Report One
 				Console.Write("Reading Batch File...");
@@ -396,9 +397,9 @@ namespace BenMAP
 									DataSourceCommonClass.UpdateModelValuesMonitorData(benMAPGrid, benMAPPollutant, ref monitorDataLine);
 									monitorDataLine.GridType = benMAPGrid;
 									DataSourceCommonClass.CreateAQGFromBenMAPLine(monitorDataLine, batchMonitorDirect.Filename);
-									Console.Write("Completed");
-									Console.WriteLine("Results Located At:");
-									Console.WriteLine(batchMonitorDirect.Filename);
+
+									Console.WriteLine("Completed");
+									Console.WriteLine("Results saved at: "+batchMonitorDirect.Filename);
 								}
 								catch (Exception ex)
 								{
@@ -735,9 +736,8 @@ namespace BenMAP
 										exportToTxt(apvrTreeNode, batchReportAuditTrail.ReportFile);
 										break;
 								}
-								Console.WriteLine("Completed" + Environment.NewLine);
-								Console.WriteLine("Results Saved At:" + Environment.NewLine);
-								Console.WriteLine(batchReportAuditTrail.ReportFile + Environment.NewLine);
+								Console.WriteLine("Completed");
+								Console.WriteLine("Results saved at: "+batchReportAuditTrail.ReportFile);
 							}
 							catch (Exception ex)
 							{
@@ -1033,10 +1033,8 @@ namespace BenMAP
 								benMAP._tableObject = bControlCR.lstCRSelectFunctionCalculateValue;
 								benMAP.btnTableOutput_Click(null, null);
 
-
-								Console.Write("Completed" + Environment.NewLine);
-								Console.Write("Results Located At:" + Environment.NewLine);
-								Console.Write(batchReportCFGR.ReportFile);
+								Console.WriteLine("Completed");
+								Console.WriteLine("Results saved at: "+batchReportCFGR.ReportFile);
 							}
 							catch (Exception ex)
 							{
@@ -1054,18 +1052,29 @@ namespace BenMAP
 						{
 							try
 							{
-								int prevTop = Console.CursorTop;
-								BenMAP benMAP = new BenMAP("");
-								int currTop = Console.CursorTop;
-								for (int i = currTop; i > prevTop - 1; i--)             //This code clears the command line of output text from appManager1.LoadExtensions(); in initialization of BenMAP
+								int prevTop = 0;
+								if( !CommonClass.BatchMode )
 								{
-									Console.SetCursorPosition(0, i);
-									Console.Write(new String(' ', Console.BufferWidth));
+									prevTop = Console.CursorTop;
 								}
-								Console.SetCursorPosition(0, prevTop);
+
+								BenMAP benMAP = new BenMAP("");
+
+								// This code clears the command line of output text from appManager1.LoadExtensions();
+								// called during the initialization of BenMAP
+								if( !CommonClass.BatchMode )
+								{
+									int currTop = Console.CursorTop;
+									for (int i = currTop; i > prevTop - 1; i--)
+									{
+										Console.SetCursorPosition(0, i);
+										Console.Write(new String(' ', Console.BufferWidth));
+									}
+									Console.SetCursorPosition(0, prevTop);
+								}
+
 								Console.Write("Generating Report (APVR)...");
 								BatchReportAPVR batchReportAPVR = batchBase as BatchReportAPVR;
-
 
 								ValuationMethodPoolingAndAggregation apvrVMPA = new ValuationMethodPoolingAndAggregation();
 								string err = "";
@@ -1716,9 +1725,8 @@ namespace BenMAP
 										benMAP.tabCtlReport.SelectedIndex = 1;
 										benMAP.btnTableOutput_Click(null, null);
 
-										Console.Write("Completed" + Environment.NewLine);
-										Console.WriteLine("Results Located At:");
-										Console.WriteLine(batchReportAPVR.ReportFile);
+										Console.WriteLine("Completed");
+										Console.WriteLine("Results saved at: "+batchReportAPVR.ReportFile);
 										break;
 
 									case "PooledIncidence":
@@ -1742,11 +1750,10 @@ namespace BenMAP
 										benMAP.tabCtlReport.SelectedIndex = 1;
 										benMAP.btnTableOutput_Click(null, null);
 
-
-										Console.Write("Completed" + Environment.NewLine);
-										Console.WriteLine("Results Located At:");
-										Console.WriteLine(batchReportAPVR.ReportFile);
+										Console.WriteLine("Completed");
+										Console.WriteLine("Results saved at: "+batchReportAPVR.ReportFile);
 										break;
+
 									case "PooledValuation":
 										benMAP.loadAllAPVPooling();
 										List<AllSelectValuationMethodAndValue> lstallSelectValuationMethodAndValue = new List<AllSelectValuationMethodAndValue>();
@@ -1777,9 +1784,8 @@ namespace BenMAP
 
 										benMAP.btnTableOutput_Click(null, null);
 
-										Console.Write("Completed" + Environment.NewLine);
-										Console.WriteLine("Results Located At:");
-										Console.WriteLine(batchReportAPVR.ReportFile);
+										Console.WriteLine("Completed");
+										Console.WriteLine("Results saved at: "+batchReportAPVR.ReportFile);
 										break;
 
 									default:

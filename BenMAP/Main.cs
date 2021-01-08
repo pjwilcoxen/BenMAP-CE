@@ -331,12 +331,10 @@ namespace BenMAP
 			{
 				if (BatchCommonClass.RunBatch(CommonClass.InputParams[0]) == false)
 				{
-					System.Console.WriteLine("false return from batch call");
+					Console.WriteLine("");
+					Console.WriteLine("Batch run unsuccessful");
 				};
-				Console.Write("Press Enter To Exit Batch Mode");
-				Console.ReadLine();
-
-				Environment.Exit(0);
+				Application.ExitThread();
 			}
 			CommonClass.BenMAPForm = _currentForm as BenMAP;
 			String errorcode = "0";
