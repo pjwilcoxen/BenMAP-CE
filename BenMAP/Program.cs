@@ -7,7 +7,6 @@ using System.Configuration;
 using System.Runtime.ExceptionServices;
 using System.Threading;
 
-
 namespace BenMAP
 {
 	static class Program
@@ -19,7 +18,7 @@ namespace BenMAP
 		private static extern bool AttachConsole(int pid);
 
 		[STAThread]
-		static int Main(string[] arg)
+		static void Main(string[] arg)
 		{
 			string strArg = "";
 			foreach (string s in arg)
@@ -82,11 +81,6 @@ namespace BenMAP
 			}
 
 			Application.Run(new Main());
-
-			if(CommonClass.BatchMode)
-				Console.WriteLine("Batch run complete");
-
-			return 0;
 		}
 
 		//static void FirstChanceExceptionHandler(object source, FirstChanceExceptionEventArgs args)
