@@ -264,6 +264,11 @@ namespace BenMAP
 					//need to modify string to use general data location
 					str = str.Replace("##USERDATA##", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
 
+					// Work around bug in Firebird that can randomly leave a connection open when
+					// shutting down. That causes an access violation or hangs the appliction on
+					// exit from batch mode. See http://tracker.firebirdsql.org/browse/DNET-806
+					str = str.Replace("pooling=True","pooling=False");
+
 					_connection = new FirebirdSql.Data.FirebirdClient.FbConnection(str);
 				}
 
@@ -311,8 +316,6 @@ namespace BenMAP
 			return connection;
 
 		}
-
-
 
 		public static List<BenMAPPollutant> LstPollutant; public static BenMAPGrid rBenMAPGrid;
 		public static void SaveCSV(DataTable dt, string fileName)

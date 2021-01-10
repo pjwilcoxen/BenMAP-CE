@@ -327,15 +327,14 @@ namespace BenMAP
 		private void Main_Load(object sender, EventArgs e)
 		{
 			_projFileName = "";
+
 			if (CommonClass.BatchMode)
 			{
 				if (BatchCommonClass.RunBatch(CommonClass.InputParams[0]) == false)
-				{
-					Console.WriteLine("");
-					Console.WriteLine("Batch run unsuccessful");
-				};
-				Application.ExitThread();
+					Environment.Exit(1);
+				Environment.Exit(0);
 			}
+
 			CommonClass.BenMAPForm = _currentForm as BenMAP;
 			String errorcode = "0";
 			if (_currentForm == null)
@@ -812,7 +811,7 @@ namespace BenMAP
 			{
 				if (CommonClass.BatchMode)
 				{
-					e.Cancel = true;
+					e.Cancel = false;
 					return;
 				}
 				ExitConfirm exit = new ExitConfirm();
@@ -825,7 +824,11 @@ namespace BenMAP
 				DialogResult rtn = new DialogResult();
 				if (isShowExit == "T")
 				{ rtn = exit.ShowDialog(); }
-				if (rtn == System.Windows.Forms.DialogResult.Cancel) { e.Cancel = true; return; }
+				if (rtn == System.Windows.Forms.DialogResult.Cancel)
+				{
+					e.Cancel = true;
+					return;
+				}
 				deleteValidationLogFiles();
 			}
 			catch (Exception ex)

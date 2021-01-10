@@ -269,7 +269,10 @@ namespace BenMAP
 					Console.WriteLine("Completed (Loaded " + lstBatchBase.Count + " Command)");
 
 				if (checkLog)
+				{
 					Console.WriteLine("Error Executing Batch File Command(s)" + Environment.NewLine + "Log Available at " + strFile + ".log");
+					return false;
+				}
 
 				ESIL.DBUtility.FireBirdHelperBase fb = new ESIL.DBUtility.ESILFireBirdHelper();
 
