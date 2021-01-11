@@ -280,9 +280,6 @@ namespace BenMAP
 				foreach (BatchBase batchBase in lstBatchBase)
 				{
 					batchCount += 1;
-					//Console.SetCursorPosition(0, Console.CursorTop);
-					//Console.Write(new String(' ', Console.BufferWidth));
-					//Console.SetCursorPosition(0, Console.CursorTop - 1);
 					Console.WriteLine("---Running Command #" + batchCount + "---");
 					//CommonClass.ClearAllObject(); //Clear all object so that each batch action runs independently.
 					if (batchBase is BatchAQGBase)
@@ -757,19 +754,12 @@ namespace BenMAP
 						{
 							try
 							{
-								int prevTop = Console.CursorTop;
-								BenMAP benMAP = new BenMAP("");
-								int currTop = Console.CursorTop;
-								for (int i = currTop; i > prevTop - 1; i--)         //This code clears the command line of output text from appManager1.LoadExtensions(); in initialization of BenMAP
-								{
-									Console.SetCursorPosition(0, i);
-									Console.Write(new String(' ', Console.BufferWidth));
-								}
-								Console.SetCursorPosition(0, prevTop);
 
-								BatchReportCFGR batchReportCFGR = batchBase as BatchReportCFGR;
+								BenMAP benMAP = new BenMAP("");
 
 								Console.Write("Generating Report (CFGR)...");
+								BatchReportCFGR batchReportCFGR = batchBase as BatchReportCFGR;
+
 								benMAP._outputFileName = batchReportCFGR.ReportFile;
 								string err = "";
 								BaseControlCRSelectFunctionCalculateValue bControlCR = Configuration.ConfigurationCommonClass.LoadCFGRFile(batchReportCFGR.InputFile, ref err);
@@ -1055,26 +1045,8 @@ namespace BenMAP
 						{
 							try
 							{
-								int prevTop = 0;
-								if( !CommonClass.BatchMode )
-								{
-									prevTop = Console.CursorTop;
-								}
 
 								BenMAP benMAP = new BenMAP("");
-
-								// This code clears the command line of output text from appManager1.LoadExtensions();
-								// called during the initialization of BenMAP
-								if( !CommonClass.BatchMode )
-								{
-									int currTop = Console.CursorTop;
-									for (int i = currTop; i > prevTop - 1; i--)
-									{
-										Console.SetCursorPosition(0, i);
-										Console.Write(new String(' ', Console.BufferWidth));
-									}
-									Console.SetCursorPosition(0, prevTop);
-								}
 
 								Console.Write("Generating Report (APVR)...");
 								BatchReportAPVR batchReportAPVR = batchBase as BatchReportAPVR;

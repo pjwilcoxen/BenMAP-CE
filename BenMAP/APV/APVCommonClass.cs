@@ -355,7 +355,7 @@ namespace BenMAP.APVX
 				if (valuationMethodPoolingAndAggregation.lstValuationMethodPoolingAndAggregationBase.First().lstAllSelectCRFunctionIncidenceAggregation == null)
 				{
 					bool isBatch = false;
-					if (CommonClass.InputParams != null && CommonClass.InputParams.Count() > 0 && CommonClass.InputParams[0].ToLower().Contains(".ctlx"))
+					if (CommonClass.BatchMode)
 					{
 						isBatch = true;
 					}
