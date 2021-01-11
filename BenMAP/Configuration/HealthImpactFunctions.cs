@@ -1103,7 +1103,7 @@ namespace BenMAP
 				bool isBatch = false;
 				string tip = "Creating health impact function result. Please wait.";
 				string sProgressBar = "";
-				if (CommonClass.InputParams != null && CommonClass.InputParams.Count() > 0 && CommonClass.InputParams[0].ToLower().Contains(".ctlx"))
+				if (CommonClass.BatchMode)
 				{
 					isBatch = true;
 				}
@@ -1367,9 +1367,6 @@ namespace BenMAP
 				string populationStatus = "Loading Population Data...";
 				if (isBatch)
 				{
-					//Console.SetCursorPosition(0, Console.CursorTop);
-					//Console.Write(new String(' ', Console.BufferWidth));
-					//Console.SetCursorPosition(0, Console.CursorTop - 1);
 					Console.Write(populationStatus);
 				}
 				else
@@ -1445,9 +1442,6 @@ namespace BenMAP
 							else
 							{
 								populationStatus = "Loading Population Data (Cached)...";
-								//Console.SetCursorPosition(0, Console.CursorTop);
-								//Console.Write(new String(' ', Console.BufferWidth));
-								//Console.SetCursorPosition(0, Console.CursorTop - 1);
 								Console.Write(populationStatus);
 							}
 						}
@@ -1479,10 +1473,7 @@ namespace BenMAP
 
 					if (isBatch)
 					{
-						//Console.SetCursorPosition(populationStatus.Length, Console.CursorTop);
-						//Console.Write(new String(' ', Console.BufferWidth));
-						//Console.SetCursorPosition(populationStatus.Length, Console.CursorTop - 1);
-						Console.Write("Completed" + Environment.NewLine);
+						Console.WriteLine("Completed");
 					}
 				}
 				catch (Exception ex)
@@ -1867,10 +1858,6 @@ namespace BenMAP
 										Console.Write(".");
 										Thread.Sleep(1000);
 									}
-
-									Console.SetCursorPosition(progressString.Length, Console.CursorTop);
-									Console.Write(new String(' ', Console.BufferWidth));
-									Console.SetCursorPosition(progressString.Length, Console.CursorTop - 1);
 								}
 								else
 									break;
@@ -1889,10 +1876,6 @@ namespace BenMAP
 
 					if (finishHIF.Exception != null)        //Check on status of the tasks running HIF, clear the console and provide final update
 						throw finishHIF.Exception;
-
-					Console.SetCursorPosition(0, Console.CursorTop);
-					Console.Write(new String(' ', Console.BufferWidth));
-					Console.SetCursorPosition(0, Console.CursorTop);
 
 					if (finishHIF.Status == TaskStatus.RanToCompletion)
 						Console.WriteLine("Processing Health Impact Functions...Completed");
@@ -2012,10 +1995,7 @@ namespace BenMAP
 				else
 				{
 					Configuration.ConfigurationCommonClass.SaveCRFRFile(CommonClass.BaseControlCRSelectFunctionCalculateValue, _filePath);
-					//Console.SetCursorPosition(0, Console.CursorTop);
-					//Console.Write(new String(' ', Console.BufferWidth));
-					//Console.SetCursorPosition(0, Console.CursorTop - 1);
-					Console.WriteLine("Results Saved At:" + Environment.NewLine + _filePath);
+					Console.WriteLine("Results saved at:" + _filePath);
 				}
 			}
 			catch (Exception e)

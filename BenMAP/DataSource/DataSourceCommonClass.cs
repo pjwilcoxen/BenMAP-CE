@@ -3265,7 +3265,7 @@ Math.Cos(Y0 / 180 * Math.PI) * Math.Cos(Y1 / 180 * Math.PI) * Math.Pow(Math.Sin(
 						}
 						i++;
 					}
-					if (!(CommonClass.InputParams != null && CommonClass.InputParams.Count() > 0 && CommonClass.InputParams[0].ToLower().Contains(".ctlx")))
+					if (!(CommonClass.BatchMode) )
 					{
 						string warningtip = "";
 						if (iMonitorName < 0) warningtip = "'Monitor Name', ";

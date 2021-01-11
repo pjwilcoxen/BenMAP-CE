@@ -788,19 +788,12 @@ To assign a valuation function to a given set of incidence results, click and dr
 			{
 				DialogResult rtn;
 				bool isBatch = false;
-				if (CommonClass.InputParams != null && CommonClass.InputParams.Count() > 0 && CommonClass.InputParams[0].ToLower().Contains(".ctlx"))
+				if (CommonClass.BatchMode)
 				{
 					isBatch = true;
 					CommonClass.BenMAPPopulation = CommonClass.ValuationMethodPoolingAndAggregation.BaseControlCRSelectFunctionCalculateValue.BenMAPPopulation;
 					CommonClass.GBenMAPGrid = CommonClass.ValuationMethodPoolingAndAggregation.BaseControlCRSelectFunctionCalculateValue.BaseControlGroup.First().GridType;
-				}
-				string apvProcess = "Processing APV File...";
-				if (isBatch)
-				{
-					Console.SetCursorPosition(0, Console.CursorTop);
-					Console.Write(new String(' ', Console.BufferWidth));
-					Console.SetCursorPosition(0, Console.CursorTop - 1);
-					Console.Write(apvProcess);
+					Console.Write("Processing APV File...");
 				}
 				if (CommonClass.ValuationMethodPoolingAndAggregation == null) { CommonClass.ValuationMethodPoolingAndAggregation = new ValuationMethodPoolingAndAggregation(); }
 
@@ -1326,14 +1319,10 @@ CommonClass.ValuationMethodPoolingAndAggregation.IncidencePoolingAndAggregationA
 				TimeSpan ts = dtNow - dtRunStart;
 				CommonClass.ValuationMethodPoolingAndAggregation.lstLog = new List<string>();
 				CommonClass.ValuationMethodPoolingAndAggregation.lstLog.Add("Processing complete. Valuation processing time: " + ts.Hours + " hours " + ts.Minutes + " minutes " + ts.Seconds + " seconds.");
-				if (!isBatch) WaitClose();
+				if (!isBatch) 
+               WaitClose();
 				else
-				{
-					Console.SetCursorPosition(apvProcess.Length, Console.CursorTop);
-					Console.Write(new String(' ', Console.BufferWidth));
-					Console.SetCursorPosition(apvProcess.Length, Console.CursorTop - 1);
-					Console.Write("Completed" + Environment.NewLine);
-				}
+					Console.WriteLine("Completed");
 
 				CommonClass.ValuationMethodPoolingAndAggregation.CreateTime = DateTime.Now;
 				if (_filePath != "")
@@ -1344,25 +1333,17 @@ CommonClass.ValuationMethodPoolingAndAggregation.IncidencePoolingAndAggregationA
 
 					if (APVX.APVCommonClass.SaveAPVRFile(_filePath, CommonClass.ValuationMethodPoolingAndAggregation))
 					{
-						if (!isBatch) MessageBox.Show("File saved.", "File saved");
+						if (!isBatch) 
+                     MessageBox.Show("File saved.", "File saved");
 						else
-						{
-							Console.SetCursorPosition(0, Console.CursorTop);
-							Console.Write(new String(' ', Console.BufferWidth));
-							Console.SetCursorPosition(0, Console.CursorTop - 1);
-							Console.WriteLine("Results Saved At:" + Environment.NewLine + _filePath);
-						}
+							Console.WriteLine("Results saved at: " + _filePath);
 					}
 					else
 					{
-						if (!isBatch) MessageBox.Show("Out of memory.", "Error");
+						if (!isBatch) 
+                     MessageBox.Show("Out of memory.", "Error");
 						else
-						{
-							Console.SetCursorPosition(0, Console.CursorTop);
-							Console.Write(new String(' ', Console.BufferWidth));
-							Console.SetCursorPosition(0, Console.CursorTop - 1);
 							Console.WriteLine("Error Saving APVR File");
-						}
 					}
 
 				}
